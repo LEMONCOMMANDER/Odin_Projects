@@ -9,7 +9,7 @@
 
 def error_text(message)
   #assignment  condition   if     true=            or         false=
-  message = message.empty? ? "no error text given" : "\e[31m#{message}\e[0m"
+  message = message.empty? ? "\e[31mERROR: [ NO ERROR TEXT GIVEN TO DESCRIBE ISSUE ]\e[0m" : "\e[31m#{message}\e[0m"
   message
 end
 
@@ -34,12 +34,13 @@ def stock_picker(prices)
     p "single day: #{output}"
     output
   else
+    first_issue = prices.select {|item| item.class != Array}
     #ANSI escape code for red text
-    raise error_text("ERROR -- All children items need to either be all arrays or all integers:\nENTRY: #{prices}")
+    raise error_text("ERROR -- All children items need to either be all arrays or all integers:\nENTRY: #{prices}\nISSUES: #{first_issue}")
   end
 end
 
 
-stock_picker([17,3,6,9,15,8,6,1,10])
-stock_picker([[17,3,6,9,15,8,6,1,10], [17,3,6,9,15,8,6,1,10], [18,3,6,9,15,8,6,1,10]])
-stock_picker([[17,3,6,9,15,8,6,1,10], 45, [17,3,6,9,15,8,6,1,10]])
+stock_picker([3, 5, 7, 2, 8, 10, 1, 4, 6, 9])
+stock_picker([[3, 5, 7], [2, 8, 1], [4, 6, 9], [10, 2, 3]])
+stock_picker([ [3, 5, 7], 2, [8, 1, 4], 6, [9, 10, 2]])
