@@ -10,6 +10,21 @@ def substrings(input, dictionary)
   output = {}
   input.downcase.split(' ') do |word|
     word = word.match(/\w+/).to_s
+
+
+## reduce path
+#     output = output.merge(
+#       dictionary.reduce({}) do |acc, next_value|
+#         if word.include?(next_value)
+#           acc[next_value] = acc.has_key?(next_value) ? acc[next_value] + 1 : 1
+#         end
+#         acc
+#       end
+#       )
+#   end
+#       p output
+# end
+
     dictionary.each do |comparative|
       if word.include?(comparative)
         if output.has_key?(comparative)
