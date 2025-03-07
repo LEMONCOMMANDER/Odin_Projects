@@ -9,7 +9,7 @@ def caesar_cipher(string, shift)
         when (32) then min = (32 - shift); max = 32
         when (65..90) then min = 64; max = 90
         when (97..122) then min = 65; max = 122
-        else raise "#{char} is outside the range of [a-z] or [A-Z]: \nENTRY: #{string}"
+        else raise "\e[32m#{char} is outside the range of [a-z] or [A-Z]: \nENTRY: #{string}e\[0m"
       end
 
       if (char.ord + shift) > max
