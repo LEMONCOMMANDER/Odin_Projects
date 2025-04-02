@@ -1,0 +1,193 @@
+Thalindor Naming Conventions: Rules & Structure
+    Thalindor is a realm of wealth, trade, shifting alliances, and merchant power. This means their
+    names should reflect:
+
+    Cosmopolitan & Merchant-Class Influences –
+        Names should feel fluid, sophisticated, and carry traces of diverse linguistic roots,
+        as Thalindor is a hub of trade and culture.
+
+    Dynastic Merchant Houses & Family Lineage –
+        Surnames should sound like established family names rather than purely occupational titles.
+
+    Nomadic & Desert Influences –
+        Eastern, Arabic, and Mediterranean-inspired phonetics make sense for desert dwellers
+        and caravan folk.
+
+    A Separation Between Noble Merchant Houses, Middle-Class Traders, and Lowborns –
+        Names should indicate status within Thalindor’s mercantile hierarchy.
+
+    Common Patterns for Thalindor Surnames:
+        1. Merchant & Dynastic Surnames
+            These names represent powerful trade families, banking guilds, and influential houses.
+            They often have soft-yet-regal sounds, with vowels flowing smoothly and consonants balanced.
+
+            Formation:
+            Many end in “-is,” “-an,” “-ar,” “-on,” or “-iel” to evoke a classical, noble feel.
+            Prefixes may come from historical figures, patron deities, or old trade guilds.
+
+            Examples:
+                - Belvahn (From “Bel” (lord) + “Vahn” (keeper/guardian) → Old merchant house)
+                - Salzhad (“Salt-lord” → a family that controlled salt trade routes)
+                - Duskari (From “Duskar” (gold-lit sands) → an old aristocratic desert-born dynasty)
+
+        2. Middle-Class Traders & Craftsmen
+            These names are less grandiose than noble houses, often originating from crafts, ports, or regional names.
+
+            Formation:
+            Blended occupational roots with refined endings (e.g., "-ir," "-an," "-ash").
+            Inspired by local landmarks, port towns, or professions.
+
+            Examples:
+                - Ralven (From “Ral” (bronze) + “ven” (hand) → smithing or metal-trade family)
+                - Darqir (“Dar” (keeper) + “qir” (spices) → spice merchants or caravan leaders)
+                - Veylan (From “Vey” (sea) + “lan” (trade) → ship-owning merchant family)
+
+        3. Desert Nomad & Oasis-Tender Surnames
+            The Oasis-Tenders and desert-born merchants carry names that sound more fluid and ancient, reflecting deep ties to the desert and its sacred resources.
+
+            Formation:
+            Often have elongated vowels and softened consonants for a mystical, oral-tradition feel.
+            Many end in “-zir,” “-ad,” “-esh,” “-ayn” to reflect lyrical, Arabic-Persian influences.
+            Prefixes might relate to natural features like the moon, sand, stars, and water sources.
+
+            Examples:
+                - Zahadi (From “Zahad” (desert star) → a name tied to the celestial skies)
+                - Miravesh (From “Mira” (oasis) + “Vesh” (keeper) → guardians of water sources)
+                - Asfarin (From “Asfar” (traveler) → an ancient nomadic family lineage)
+
+        4. Lowborn or Bastard Surnames in Thalindor
+            Since Thalindor is ruled by wealth, not bloodline, bastards and lowborn families would likely take derisive, descriptive, or place-based surnames.
+
+            Common Naming Traits:
+            Often mark outcasts, debtors, or dishonored traders.
+            Names might be based on where they were born (ports, desert fringes, or slums).
+            Others are nicknames that stuck due to debt, bad business, or family disgrace.
+
+            Examples:
+            - Jalresh (“Jal” (sand) + “resh” (worn/tattered) → meaning a “wandering drifter” or “beggar”)
+            - Korrinash (From “Kor” (debt) + “rinash” (lost one) → a name for someone born into a ruined merchant house or a family marked by failure in trade)
+            - Saevren (From “Saev” (coin) + “ren” (fallen) → a bastard-born trader, someone cast out of a once-wealthy house)
+
+
+Thalindor: The Merchant’s Dominion
+    A land of bustling ports, sprawling deserts, and boundless opportunity, Thalindor is a realm where commerce reigns supreme. Unlike other kingdoms ruled by kings or warlords,
+    Thalindor is governed by the Merchant’s Guild, a powerful syndicate that values wealth over bloodlines and trade over conquest. Here, coin speaks louder than titles, and alliances
+    shift like the desert sands as merchants, mercenaries, and pirates vie for fortune and influence.
+
+    The Herdirnen Bay is the heart of Thalindor’s maritime trade, with grand harbors, towering ships, and sprawling markets where goods from across the world exchange hands.
+    Further north, the plains of Calenmor stretch endlessly, home to caravan guides and mercenary escorts who protect the lifeblood of trade. To the east, the Anír Gilith Desert is a vast
+    and unforgiving wasteland, where only the oases provide shelter for weary travelers. The Oasis-Tenders, desert nomads and traders, maintain these vital water sources, ensuring the desert
+    roads remain open for those willing to pay.
+
+    There is no singular ruler in Thalindor, only the ever-shifting balance of power among the Guilds, where gold is law, and profit is king.
+
+    KEYS: Trade | City | Desert | Wealth | Survival
+    Warrior of Thalindor: The Guild Blades
+
+        Description:
+            The Guild Blades are mercenaries, city guards, and naval warriors, fighting not for honor, but for coin. Clad in light but durable armor, they are trained in urban and naval combat,
+            wielding sabers and spears that reflect the diverse influences of Thalindor’s trade routes. Whether guarding merchant ships from pirates, protecting guild halls from rivals, or enforcing
+            the will of the Merchant Lords, the Guild Blades fight with cunning, speed, and deadly efficiency.
+
+        Habits:
+            Train in coastal fortresses and urban arenas, honing their skills.
+            Hire themselves out to the highest bidder, shifting loyalties as needed.
+            Participate in naval skirmishes and desert caravan raids, always in pursuit of wealth.
+
+        Attire:
+            Lightweight, flexible armor, suited for movement in crowded streets and ships.
+            Guild-marked cloaks, signifying their current employer.
+            Decorative sashes and jewelry, trophies from past victories and trades.
+
+        Fighting Style:
+            Fast, precise strikes, favoring sabers, spears, and boarding axes.
+            Adaptable combat, excelling in both urban brawls and shipboard duels.
+            Grappling and disarming techniques, using their environment to their advantage.
+
+        Equipment:
+            - Cutlasses and sabers, ideal for tight quarters.
+            - Boarding axes, for ship combat and breaking defenses.
+            - Bucklers and parrying daggers, for speed and agility.
+
+        Mannerisms:
+            Bold and adventurous, often speaking in a rough, seafaring slang.
+            Always weighing the worth of a fight, knowing when to battle and when to negotiate.
+
+    Wizard of Thalindor
+    🔹 The Tidecallers
+
+    Description:
+    The Tidecallers are scholars of wind and water magic, using their arcane knowledge to guide ships, control storms, and sustain the desert’s oases. Unlike the secluded mystics of other lands, Thalindorian wizards are active players in trade and diplomacy, using their gifts to negotiate, navigate, and manipulate. Some serve as shipmasters, ensuring the winds and tides favor their fleets, while others guard the Guild’s interests, shaping the weather to their employer’s advantage.
+
+    Habits:
+    Study in coastal towers and desert sanctuaries, mastering wind and water.
+    Frequently travel by sea, gathering knowledge and expanding influence.
+    Use their magic to protect merchant vessels and control trade routes.
+    Attire:
+    Flowing robes of silk and linen, embroidered with symbols of prosperity.
+    Conch shells and oceanic talismans, focusing their connection to the elements.
+    Gold-threaded sashes, marking their status among the guilds.
+    Fighting Style:
+    Manipulate currents and storms, controlling wind and water.
+    Summon mist and fog, concealing fleets or blinding enemies.
+    Use water whips and compressed air blasts, striking with precision.
+    Equipment:
+    ✅ Enchanted tridents and coral staves, channeling the ocean’s power.
+    ✅ Conch shell spell-foci, amplifying their elemental abilities.
+    ✅ Arcane charts and maps, predicting trade winds and sea routes.
+
+    Mannerisms:
+    Fluid and adaptable, often speaking in metaphors related to the sea.
+    Witty and observant, constantly reading the winds of fortune.
+    Ranger of Thalindor
+    🔹 The Sandwardens
+
+    Description:
+    The Sandwardens are desert rangers, caravan guides, and maritime scouts, skilled in navigation, survival, and long-range combat. Equally at home in the endless dunes and on the rolling waves, they patrol the trade routes, ensuring safe passage for merchants and travelers. They wield harpoons and crossbows, versatile weapons suited for both the desert and the sea. Whether tracking bandits in the sands or pirates in the shallows, the Sandwardens are the unseen sentinels of trade and travel.
+
+    Habits:
+    Chart new routes, ensuring the fastest and safest paths are known only to them.
+    Train in both desert and coastal environments, mastering survival in extreme conditions.
+    Work with merchants and smugglers, guiding both legal and illicit goods.
+    Attire:
+    Weather-resistant cloaks, protecting against sun and sand.
+    Practical leather armor, reinforced for protection without restriction.
+    Face coverings and goggles, shielding them from the elements.
+    Fighting Style:
+    Use of high ground, taking advantage of elevation and cover.
+    Ambush tactics, striking quickly before disappearing into the wild.
+    Mastery of ranged combat, wielding crossbows and throwing knives.
+    Equipment:
+    ✅ Recurve crossbows, for silent, deadly accuracy.
+    ✅ Harpoons and spears, useful for both combat and survival.
+    ✅ Navigation tools, ensuring safe passage through treacherous lands.
+
+    Mannerisms:
+    Quiet and calculating, speaking only when necessary.
+    Always scanning the horizon, never staying in one place for too long.
+    Assassin of Thalindor
+    🔹 The Shadebinders
+
+    Description:
+    The Shadebinders are spies, saboteurs, and assassins, working in the shadows of the Merchant’s Guild. Unlike the silent killers of other lands, Thalindorian assassins are also masters of deception, blending seamlessly into crowds, markets, and noble courts. They wield hidden blades and poisons, striking only when the price is right. In a land where power shifts with wealth, they ensure that deals remain in favor of their employers—by any means necessary.
+
+    Habits:
+    Infiltrate merchant houses, gathering intelligence on rival factions.
+    Disrupt trade agreements, ensuring the Guild's interests remain dominant.
+    Disappear into the bustling crowds, using chaos as cover.
+    Attire:
+    Loose, layered clothing, ideal for both stealth and movement.
+    Concealed weapons and pouches, ensuring they are always armed.
+    Elaborate disguises, allowing them to slip unnoticed through society.
+    Fighting Style:
+    Swift, surgical strikes, eliminating targets without a sound.
+    Use of poisons and distractions, ensuring no one sees the killer’s hand.
+    Blades hidden in sleeves, rings, and belts, always within reach.
+    Equipment:
+    ✅ Poisoned daggers and garrotes, for quick eliminations.
+    ✅ Smoke bombs and flash powders, creating diversions.
+    ✅ Forgery kits and lockpicks, ensuring access anywhere.
+
+    Mannerisms:
+    Smooth and charismatic, always speaking with a silver tongue.
+    Masters of manipulation, turning allies into unwitting tools.
