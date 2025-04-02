@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/full_stack_ruby_rails/Projects/z_self_guided/class_practice/flavor_texts" />
     </content>
     <orderEntry type="jdk" jdkName="rbenv: 3.3.5" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
