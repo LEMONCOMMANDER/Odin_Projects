@@ -1,5 +1,5 @@
 class Car
-  attr_accessor :color, :model, :speed, :engine
+  attr_accessor :color, :model, :speed, :is_on
   attr_reader :year
   def initialize (year, color, model)
     @year = year
@@ -8,13 +8,14 @@ class Car
     @speed = 0
   end
 
+
   def start_car
-    self.engine = "on"
+    self.is_on = true
     p 'chug chug chug chug ROOOOSH'
   end
 
   def stop_car
-    self.engine = "off"
+    self.is_on = false
     self.speed = 0
     p 'sputter sputter sputter...'
   end
@@ -34,13 +35,8 @@ class Car
     end
   end
   def drive_info
-    if engine == "off"
-      p "The engine is #{engine}"
-    else
-      p "the engine is #{engine} and driving #{speed} mph"
-    end
+      p "The engine is #{is_on ? "on and driving #{speed} mph" : 'off'}"
   end
-
 
   def car_info
     p "the #{model} is a #{color} #{year} model"
@@ -52,7 +48,21 @@ class Car
     end
     car_info
   end
+
+  def self.fuel(car)
+    puts "the #{car.year} #{car.model} has a fuel efficiency of #{rand(20..60)} miles per gallon"
+  end
+
+  def to_s
+    puts "I am a vehicle with the following information:"
+    self.car_info
+    Car.fuel(self)
+
+  end
+
 end
+
+
 
 
 car = Car.new(2021, "red", "Toyota")
@@ -89,4 +99,10 @@ puts ""
 puts "lets get that changed"
 puts ""
 car.workshop("blue")
-# car.car_info
+
+# puts ""
+# puts "Let's check the car's metrics:"
+# Car.fuel(car)
+
+puts ""
+car.to_s
