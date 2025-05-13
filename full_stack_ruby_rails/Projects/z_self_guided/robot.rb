@@ -61,13 +61,15 @@ class Robot
 
   ## will show the robots equipment, stats, or both depending on optional arguments given in the call.
   # returns nothing
-  def display(gear = false, stats = false)
-    if gear == false && stats == false
-      gear = true
-      stats = true
+  def display(display_gear = false, display_stats = false)
+    # logic designed for consumer of display - can specifiy what you want to see with true - which is easier
+    # to understand than specifying what you don't want to see with false
+    if display_gear == false && display_stats == false
+      display_gear = true
+      display_stats = true
     end
 
-    if gear
+    if display_gear
       puts <<~GEAR
         ____________EQUIPMENT_____________
         \e[31m          ID:       #{self.id}\e[0m
@@ -82,7 +84,7 @@ class Robot
       GEAR
       end
 
-    if stats
+    if display_stats
       puts <<~STATS
         ____________STATS________________
                 Health:     \e[34m#{self.health}\e[0m
@@ -102,21 +104,21 @@ class Robot
   end
 
   ## displays quick ability details and, if txt == true, flavor text
-  def details(txt = true)
+  def details(flavor_text = true)
     puts "\e[31m----------- HEAD ------------\e[0m"
-    self.head_details(txt)
+    self.head_details(flavor_text)
     puts "\e[31m-----------------------------\e[0m"
 
     puts "\e[31m---------- CHASSIS ----------\e[0m"
-    self.chassis_details(txt)
+    self.chassis_details(flavor_text)
     puts "\e[31m-----------------------------\e[0m"
 
     puts "\e[31m----------- LEGS ------------\e[0m"
-    self.legs_details(txt)
+    self.legs_details(flavor_text)
     puts "\e[31m-----------------------------\e[0m"
 
     puts "\e[31m----------- ARMS ------------\e[0m"
-    self.arms_details(txt)
+    self.arms_details(flavor_text)
     puts "\e[31m-----------------------------\e[0m"
   end
 
