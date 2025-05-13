@@ -133,15 +133,15 @@ class Robot
     return 0 if iv.include?(:@hacked)
 
     [:@head_ability, :@arms_ability, :@chassis_ability].shuffle.each do |v|
-      next unless self.head_ability?
-      next unless self.chassis_ability?
+      next unless v == :@head_ability && self.head_ability?
+      next unless v == :@chassis_ability && self.chassis_ability?
 
       ability = self.instance_variable_get(v)[:ability]
-      if v == @head_ability && self.head_ability? && self.instance_variable_get(v)[:type] == AbilityType::OFFENSIVE
+      if v == :@head_ability && self.head_ability? && self.instance_variable_get(v)[:type] == AbilityType::OFFENSIVE
         total_damage += self.method(ability).call
       end
 
-      if v == @chassis_ability && self.chassis_ability? && self.instance_variable_get(v)[:type] == AbilityType::OFFENSIVE
+      if v == :@chassis_ability && self.chassis_ability? && self.instance_variable_get(v)[:type] == AbilityType::OFFENSIVE
         total_damage += self.method(ability).call
       end
 
