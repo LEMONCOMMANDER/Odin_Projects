@@ -1,5 +1,7 @@
 require_relative './robot'
 
+## logic to determine if the attacking robot hits.
+# trajectory ability gives a boost to the defender (defensive ability handled directly)
 def hit?(attacker, defender)
   e_s_mod = defender.head_ability? && defender.head_ability[:ability] == :trajectory ? defender.trajectory : 0
   a_debuff = attacker.instance_variable_defined?(:@a_debuff) ? -10 : 0
@@ -10,6 +12,11 @@ def hit?(attacker, defender)
   return hit
 end
 
+## logic that determines the full round of a battle - calls hit method.
+# addresses the retarget ability explicitly if the hit is false.
+# if the hit is true, it calls the attack method on the attacker robot, and a minimum of 1 damage SHOULD be applied
+# on every successful hit.
+# discharge is handled explicitly - which returns 1/2 damage to attacker when conditions are met.
 def battle_round(attacker, defender, hit)
   if !hit #if miss, check retarget
     reatk = attacker.head_ability? && attacker.head_ability[:ability] == :retarget ? attacker.retarget(false, attacker.attack(c = false, defender)) : 0
@@ -66,6 +73,7 @@ def recharge_ap(attacker, defender)
   # puts "robot #{defender.id} regains #{defender.ap - temp2} ap"
 end
 
+## loop logic that handles the full battle AND swapping the attacker and defender.
 def battle(robot1, robot2)
   attacker = robot1.speed >= robot2.speed ? robot1 : robot2
   defender = attacker == robot1 ? robot2 : robot1

@@ -13,19 +13,23 @@ class Robot
   include Arms
   include RobotMods
 
+  @@robot_count = 0
   def reset
     @@robot_count = 0
   end
-  @@robot_count = 0
 
-  attr_accessor :id, :head, :chassis, :arms, :legs, :mod1, :mod2, :mod3, :health, :acc, :damage, :armor, :speed, :ap
+  attr_accessor :id, :head, :chassis, :arms, :legs, :mod1, :mod2, :mod3, :status, :health, :acc, :damage, :armor, :speed, :ap
   attr_reader :max_health, :max_acc, :max_damage, :max_speed, :max_armor, :max_ap
   attr_reader :head_ability, :chassis_ability, :legs_ability, :arms_ability, :used, :regen
 
+  ## each robot is created new and randomly assigns one of: head, arms, legs, chassis, mod1, mod2, mod3 on initialization
+  # each robot has a unique id - prep for ROR application
+  # also records max stats in the finalize method
   def initialize
     @@robot_count ||= 0
     @@robot_count += 1
 
+    @status = 'Active' # will read decommissioned when destroyed
     @health = 12
     @acc = 10
     @damage = 5
@@ -39,7 +43,7 @@ class Robot
     @chassis = self.equip_chassis(self, self.choose_chassis)
     @arms = self.equip_arms(self, self.choose_arms)
     @legs = self.equip_legs(self, self.choose_legs)
-    @mod1 = self.equip_mod(self, self.choose_mod(1), self.set_rarity)
+    @mod1 = self.equip_mod(self, self.choose_mod(1), self.set_rarity) # chooses a random mod and rarity bonus
     @mod2 = self.equip_mod(self, self.choose_mod(2), self.set_rarity)
     @mod3 = self.equip_mod3(self)
 
@@ -55,6 +59,8 @@ class Robot
     @max_ap = self.ap
   end
 
+  ## will show the robots equipment, stats, or both depending on optional arguments given in the call.
+  # returns nothing
   def display(gear = false, stats = false)
     if gear == false && stats == false
       gear = true
@@ -90,10 +96,12 @@ class Robot
     end
   end
 
+  ## defined in applicable equipment - adds extra to ap regen in robot_battle.rb
   def has_regen?
     return false unless @regen
   end
 
+  ## displays quick ability details and, if txt == true, flavor text
   def details(txt = true)
     puts "\e[31m----------- HEAD ------------\e[0m"
     self.head_details(txt)
@@ -112,6 +120,10 @@ class Robot
     puts "\e[31m-----------------------------\e[0m"
   end
 
+  ## runs through each equipment's offensive ability if it exists and returns the total damage.
+  # disabled if hacked, and early exits if abilities don't exist (all arms have an ability).
+  # chooses the order of ability triggering at random (.shuffle)
+  # called in robot.rb attack method, which only happens in robot_battle.rb if hit is true
   def e_att_mod(*target)
     total_damage = 0
     iv = self.instance_variables
@@ -138,6 +150,10 @@ class Robot
     total_damage
   end
 
+  ## runs through each equipment's defensive ability if it exists and returns an array with reductions.
+  # an array of [1, 1] means no damage is reduced (in robot_battle.rb, e_d_mod is a multipler on damage).
+  # if disperse is called, does not trigger evade to save ap (disperse takes precedence).
+  # other defensive abilities are factored into the robot_battle logic, so only these 2 create a multiplier.
   def e_d_mod(damage)
     output = []
     if self.instance_variable_defined?(:@head_ability) || self.instance_variable_defined?(:@chassis_ability)
@@ -161,18 +177,15 @@ class Robot
     output
   end
 
-
+  ## addition modifier to determine attacking units hit chance. Only applies if attacking robot has a_buff
   def e_ac_mod
-    #ONLY NEEDS TO CHECK IV FOR BUFFS!!
-
-    #if self has any debuff, (attribute - (temp var = debuff amount))
-    # if self has any buff, (attribute + (temp var = buff amount))
     return 0 unless self.instance_variable_defined?(:@a_buff)
 
-    self.send(arms_ability[:ability]) if self.arms_ability[:type] == :ACCURACY
+    self.method(arms_ability[:ability]).call if self.arms_ability? && self.arms_ability[:type] == :ACCURACY
   end
 
-
+  ## the logic for applying damage - crit can optionally be disabled (case of double_strike ability)
+  # 'target' is a term used in the ability definitions - in this case, target would be the defender robot
   def attack(c = true, defender)
     # puts defender
     crit = rand(1..20) == 20 ? true : false
