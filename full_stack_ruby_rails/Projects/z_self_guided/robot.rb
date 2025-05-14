@@ -59,6 +59,11 @@ class Robot
     @max_ap = self.ap
   end
 
+  def remove(equipment)
+    self.remove_instance_variable(equipment)
+  end
+
+
   ## will show the robots equipment, stats, or both depending on optional arguments given in the call.
   # returns nothing
   def display(display_gear = false, display_stats = false)
@@ -133,10 +138,13 @@ class Robot
     return 0 if iv.include?(:@hacked)
 
     [:@head_ability, :@arms_ability, :@chassis_ability].shuffle.each do |v|
-      next unless v == :@head_ability && self.head_ability?
-      next unless v == :@chassis_ability && self.chassis_ability?
+      next if v == :@head_ability && !self.head_ability?
+      next if v == :@chassis_ability && !self.chassis_ability?
 
       ability = self.instance_variable_get(v)[:ability]
+
+      # puts self.instance_variable_get(@arms_ability) if v == :@arms_ability
+
       if v == :@head_ability && self.head_ability? && self.instance_variable_get(v)[:type] == AbilityType::OFFENSIVE
         total_damage += self.method(ability).call
       end

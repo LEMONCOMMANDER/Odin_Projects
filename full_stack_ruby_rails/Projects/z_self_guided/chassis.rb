@@ -113,6 +113,7 @@ module Chassis
   end
 
   def rush
+    bonus_damage = 0
     @hits ||= 0
     @hits += 1
     if @hits == 3 && self.ap >= 1
@@ -120,8 +121,8 @@ module Chassis
       @hits = 0
       self.ap -= 1
       bonus_damage = 3
-      bonus_damage
     end
+    bonus_damage
   end
 
   def evade #reduces damage

@@ -7,7 +7,7 @@ module Arms
     case choice
     when 'FC-ovw'
       # mounted turrets
-      robot.damage += 25
+      robot.damage += 20
       robot.ap += 15
       @arms_ability = {type: AbilityType::OFFENSIVE, ability: :barrage} #stores charges and then unleashes them
       @atxt = <<~TEXT
@@ -126,6 +126,8 @@ module Arms
   end
 
   def barrage
+    puts "\e[34mbarrage called\e[0m"
+
     @regen = (@regen || 0) + 1
 
     @charges ||= 0
@@ -134,22 +136,25 @@ module Arms
 
     unless @charges == 8
       @charges += 1
+      puts "BARRAGE CHARGES: #{@charges}"
       @cost += 2
       @extra_damage += 1
     end
 
-    return unless @charges >= 3
+    return 0 unless @charges >= 3
 
-    if rand(1..10) >= 9 && self.ap >= cost #early trigger
+    if rand(1..10) >= 9 && self.ap >= @cost #early trigger
       puts "\e[34mbarrage activated\e[0m"
       @charges = 0
       self.ap -= @cost
-      @extra_damage
-    elsif @charges == 8 && self.ap >= cost #full charge
+      return @extra_damage
+    elsif @charges == 8 && self.ap >= @cost #full charge
       puts "\e[34mFULL barrage activated\e[0m"
       @charges = 0
       self.ap -= @cost
-      @extra_damage
+      return @extra_damage
+    else
+      return 0
     end
   end
 
