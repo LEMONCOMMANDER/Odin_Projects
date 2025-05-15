@@ -7,7 +7,7 @@ def hit?(attacker, defender)
   a_debuff = attacker.instance_variable_defined?(:@a_debuff) ? -10 : 0
 
   random = rand(1..100)
-  hit = random + (attacker.acc - a_debuff + attacker.e_ac_mod) - (defender.speed + e_s_mod) > 60
+  hit = random + (attacker.acc + a_debuff + attacker.e_ac_mod) - (defender.speed + e_s_mod) > 60
   puts "robot #{attacker.id} attacked robot #{defender.id}, random is #{random} and hit?: #{hit}"
   return hit
 end
