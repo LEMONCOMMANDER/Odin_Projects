@@ -1,9 +1,9 @@
-require_relative './chassis'
-require_relative './head'
-require_relative './legs'
-require_relative './arms'
-require_relative './robot_mods'
-require_relative 'ability_type'
+require_relative './bot_battler/chassis'
+require_relative './ad'
+require_relative './gs'
+require_relative './bot_battler/arms'
+require_relative './bot_mods'
+require_relative 'robot_battler/ability_type'
 
 #ability types are defensive (takes a damage), offensive (happens during any attack), or accuracy based (triggers on miss and is fed a "hit" boolean)
 class Robot

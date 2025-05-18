@@ -1,4 +1,4 @@
-require_relative "./ability_type"
+require_relative "./bot_battler/ability_type"
 module Chassis
   def equip_chassis(robot, choice)
     # puts choice

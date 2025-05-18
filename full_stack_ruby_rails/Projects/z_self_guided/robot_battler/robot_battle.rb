@@ -1,4 +1,4 @@
-require_relative './robot'
+require_relative './bot'
 
 ## logic to determine if the attacking robot hits.
 # trajectory ability gives a boost to the defender (defensive ability handled directly)
