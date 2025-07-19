@@ -14,8 +14,13 @@ class Robot
   include RobotMods
 
   @@robot_count = 0
-  def reset
+  def self.reset
     @@robot_count = 0
+  end
+
+  def self.robot_count
+    #use puts in the call like: "puts Robot.robot_count"
+    @@robot_count
   end
 
   attr_accessor :id, :head, :chassis, :arms, :legs, :mod1, :mod2, :mod3, :status, :health, :acc, :damage, :armor, :speed, :ap
