@@ -56,7 +56,11 @@ class Character
   end
 
   def use_ability(ability_name, target=nil)
-    ability_output = self.send(ability_name.to_sym)
+    if target
+      ability_output = self.send(ability_name.to_sym, target)
+    else
+      ability_output = self.send(ability_name.to_sym)
+    end
 
     if target && !ability_output.nil?
       if ability_output.is_a?(Array) && self.class == "Rouge"
