@@ -1,13 +1,12 @@
 class Slime < Character
   def initialize(name: "Slime")
-    super(name)
-    self.variance
-
-
+    super()
+    variance
+    @name = "#{@type} #{name}"
   end
 
-  def self.variance
-    @type = %w[Blue, Orange, Red, Green].sample
+  def variance
+    @type = %w[Blue Orange Red Green].sample
 
     case @type
       when "Blue"
@@ -31,6 +30,8 @@ class Slime < Character
         self.defense = 2
         self.speed = 3
         self.wisdom = 5
+        self.ability_points = 15
+        self.abilities[:fireball] = AbilityDefs::FIREBALL
       when "Green"
         self.health = 100
         self.max_health = 100
@@ -38,7 +39,8 @@ class Slime < Character
         self.defense = 4
         self.speed = 2
         self.wisdom = 1
-        self.abilities[:heal] = AbilityDefs::HEAL
+        self.ability_points = 6
+        self.abilities[:mend] = AbilityDefs::MEND
       else
         puts "Error in Slime variance"
     end
