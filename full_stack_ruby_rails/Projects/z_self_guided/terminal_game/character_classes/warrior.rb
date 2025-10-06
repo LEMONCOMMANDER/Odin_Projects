@@ -1,11 +1,15 @@
 class Warrior < Character
 
   attr_accessor :rage , :rage_boost, :class
+  attr_reader :weight_list
+
+  WEIGHT_LIST = [6, 8, 5, 2, 2]
 
   def initialize(name)
     super()
     @name = name
     @class = "Warrior"
+    @weight_list = WEIGHT_LIST
 
     self.health = 140
     self.max_health = 140
@@ -39,6 +43,22 @@ class Warrior < Character
       @rage = 3 + self.rage_boost
     elsif self.health <= twenty_five
       @rage = 4 + self.rage_boost
+    end
+  end
+
+  def attack(target)
+    attack_damage = super(target)
+
+    unless attack_damage.nil?
+      target.health -= [(attack_damage - target.defense), 1].max
+      puts "target health after damage: #{target.health}"
+    end
+  end
+
+  def exp_gain(amount)
+    need_to_level_up = super(amount)
+    if need_to_level_up
+      level_up(WEIGHT_LIST)
     end
   end
 

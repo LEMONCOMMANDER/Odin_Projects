@@ -21,7 +21,7 @@ module CharacterAbilities
 
 
       if self.ability_points >= 5
-        base = 12 + self.level + self.wisdom
+        base = 6 + self.level + self.wisdom
         range = rand(1..(8 + self.wisdom))
         ability_damage = base + range
 
@@ -34,7 +34,7 @@ module CharacterAbilities
       return unless self.abilities.has_key?(:shock)
 
       if self.ability_points >= 4
-        base = 8 + self.level + self.wisdom
+        base = 6 + self.level + self.wisdom
         range = rand(1..(4 + self.wisdom))
         ability_damage = base + range
 
@@ -123,4 +123,7 @@ module CharacterAbilities
 
   end
 
+  include Magic
+  include Physical
+  include Utility
 end

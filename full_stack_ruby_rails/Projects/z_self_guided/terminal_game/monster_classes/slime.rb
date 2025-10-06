@@ -1,12 +1,12 @@
 class Slime < Character
-  def initialize(name: "Slime")
+  def initialize(name: "Slime", type: nil)
     super()
-    variance
+    variance(type)
     @name = "#{@type} #{name}"
   end
 
-  def variance
-    @type = %w[Blue Orange Red Green].sample
+  def variance(type)
+    @type = type || %w[Blue Orange Red Green].sample
 
     case @type
       when "Blue"
@@ -29,7 +29,7 @@ class Slime < Character
         self.strength = 2
         self.defense = 2
         self.speed = 3
-        self.wisdom = 5
+        self.wisdom = 6
         self.ability_points = 15
         self.abilities[:fireball] = AbilityDefs::FIREBALL
       when "Green"
