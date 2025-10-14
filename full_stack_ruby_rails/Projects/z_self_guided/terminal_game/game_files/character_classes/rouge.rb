@@ -1,13 +1,12 @@
 class Rouge < Character
 
   attr_accessor :class, :lucky
-  attr_reader :weight_list
+  attr_reader :weight_list, :lethal
 
   WEIGHT_LIST = [3, 6, 8, 3, 3]
 
   def initialize(name)
-    super()
-    @name = name
+    super(name)
     @class = "Rouge"
     @weight_list = WEIGHT_LIST
     @lucky = true
@@ -63,6 +62,19 @@ class Rouge < Character
     need_to_level_up = super(amount)
     if need_to_level_up
       level_up(WEIGHT_LIST)
+      check_for_new_abilities
+    end
+  end
+
+  def check_for_new_abilities
+    case self.level
+    when 2 then self.abilities[:cutpurse] = AbilityDefs::CUTPURSE
+    when 4 then self.abilities[:backstab] = AbilityDefs::BACKSTAB
+    when 5 then self.abilities[:dodge] = AbilityDefs::DODGE
+    when 7
+      self.abilities[:lethal] = AbilityDefs::LETHAL
+      self.instance_variable_set(:@lethal, true)
+    when 9 then self.abilities[:syphon] = AbilityDefs::SYPHON
     end
   end
 

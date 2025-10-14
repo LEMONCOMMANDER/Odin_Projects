@@ -1,0 +1,15 @@
+class Character
+  attr_accessor name: String, level: Integer, experience: Integer
+  attr_accessor health: Integer, max_health: Integer, strength: Integer, defense: Integer, speed: Integer, wisdom: Integer
+  attr_accessor ability_points: Integer, abilities: Hash[Symbol, untyped], marked_hits: Integer, gold: Integer
+
+  def initialize: (String name) -> void
+
+  def check_marked?: () -> bool
+  def calculate_miss?: () -> bool
+  def attack: (Character target) -> Integer?
+  def use_ability: (Symbol ability_name, Character? target) -> untyped
+  def exp_gain: (Integer amount) -> void
+  def set_level: (Integer level, Array[Integer] weight_list) -> void
+  def level_up: (Array[Integer] weight_list, ?bool print) -> void
+end

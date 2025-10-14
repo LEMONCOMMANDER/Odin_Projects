@@ -6,8 +6,7 @@ class Hunter < Character
   WEIGHT_LIST = [4, 4, 5, 5, 4]
 
   def initialize(name)
-    super()
-    @name = name
+    super(name)
     @class = "Hunter"
     @weight_list = WEIGHT_LIST
 

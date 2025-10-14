@@ -1,6 +1,9 @@
 module TestMethods
   def force_level(level, weight_list)
-    level.times { level_up(weight_list, false) }
+    level.times do
+      level_up(weight_list, false)
+      check_for_new_abilities
+    end
   end
 
   def attack_with_miss(target)
@@ -53,6 +56,10 @@ module TestMethods
     self.remove_instance_variable(:@marked_hits) if self.instance_variable_defined?(:@marked_hits)
   end
 
+  def always_lucky?
+    true if self.instance_variable_defined?(:@always_lucky)
+  end
+
   def always_lucky
     @always_lucky = true
   end
@@ -62,10 +69,9 @@ module TestMethods
     self.remove_instance_variable(:@always_lucky)
   end
 
-  def always_lucky?
-    true if self.instance_variable_defined?(:@always_lucky)
+  def set_dodge
+    self.instance_variable_set(:@dodge, true)
   end
-
 
   private
 

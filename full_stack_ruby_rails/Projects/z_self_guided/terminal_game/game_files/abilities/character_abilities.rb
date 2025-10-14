@@ -4,7 +4,7 @@ module CharacterAbilities
   #todo: create print statements for ability feedback in terminal
   module Magic
     def mend
-      return unless self.abilities.has_key?(:heal)
+      return unless self.abilities.has_key?(:mend)
 
       if self.ability_points >= 3
         base = 10 + self.level + self.wisdom
@@ -88,6 +88,58 @@ module CharacterAbilities
       end
     end
 
+    def cutpurse(target)
+      return unless self.abilities.has_key?(:cutpurse)
+
+      if self.ability_points >= 2
+        base = 2 + self.level
+        range = rand(1..4)
+        ability_damage = base + range
+
+        if target.instance_variable_defined?(:@robbed)
+          puts "Target has already been robbed and has no more gold to steal."
+        else
+          target.instance_variable_set(:@robbed, true)
+
+          gold_stolen = (1 + self.level) + rand(0..(9 + self.level))
+          self.gold += gold_stolen
+        end
+
+        self.ability_points = [(self.ability_points - 2), 0].max
+        ability_damage
+      end
+    end
+
+    def backstab(target)
+      return unless self.abilities.has_key?(:backstab)
+
+      if self.ability_points >= 10
+        base = 4 + self.level
+        range = rand((1 + (self.speed / 3)..(8 + (self.speed / 3))))
+        ignore_defence_percent = (target.defense * 0.15).floor.to_i
+        ability_damage = base + range + ignore_defence_percent
+
+        self.ability_points = [(self.ability_points - 10), 0].max
+        ability_damage
+      end
+    end
+
+    def syphon(target)
+      return unless self.abilities.has_key?(:syphon)
+
+      if self.ability_points >= 5
+        base = 4 + self.level + self.strength
+        range = rand(1..6)
+        ability_damage = base + range
+
+        heal_amount = (5 / 2) + ([ability_damage - target.defense, 1].max)
+        self.health = [(self.health + heal_amount), self.max_health].min
+
+        self.ability_points = [(self.ability_points - 5), 0].max
+        ability_damage
+      end
+    end
+
   end
 
   module Utility
@@ -118,6 +170,15 @@ module CharacterAbilities
           self.ability_points = [(self.ability_points - 3), 0].max
           return nil
         end
+      end
+    end
+
+    def dodge
+      return nil unless self.abilities.has_key?(:dodge)
+
+      if self.ability_points >= 6
+        self.instance_variable_set(:@dodge, true) unless self.instance_variable_defined?(:@dodge)
+        self.ability_points = [(self.ability_points - 6), 0].max
       end
     end
 

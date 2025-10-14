@@ -1,6 +1,6 @@
 class Slime < Character
   def initialize(name: "Slime", type: nil)
-    super()
+    super(name)
     variance(type)
     @name = "#{@type} #{name}"
   end
@@ -43,6 +43,15 @@ class Slime < Character
         self.abilities[:mend] = AbilityDefs::MEND
       else
         puts "Error in Slime variance"
+    end
+
+    def attack(target)
+      attack_damage = super(target)
+
+      unless attack_damage.nil?
+        target.health -= [(attack_damage - target.defense), 1].max
+        puts "target health after damage: #{target.health}"
+      end
     end
 
   end

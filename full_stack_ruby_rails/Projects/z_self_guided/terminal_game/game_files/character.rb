@@ -1,5 +1,5 @@
-require_relative 'abilities/character_abilities'
-require_relative 'test_methods'
+require_relative 'game_files/abilities/character_game_files/abilities'
+require_relative '../t_methods'
 
 class Character
   include CharacterAbilities
@@ -8,8 +8,11 @@ class Character
   attr_accessor :name, :level, :experience
   attr_accessor :health, :max_health, :strength, :defense, :speed, :wisdom
   attr_accessor :ability_points, :abilities, :marked_hits, :gold
+  attr_accessor :head, :chest, :arms, :legs, :weapon, :shield, :accessory
 
-  def initialize
+
+  def initialize(name)
+    @name = name
     @level = 1
     @experience = 0
 
@@ -26,6 +29,24 @@ class Character
     @abilities = {}
 
     @gold = 5
+
+    @head = nil
+    @chest = nil
+    @arms = nil
+    @legs = nil
+    @weapon = nil
+    @shield = nil
+    @accessory = nil
+  end
+
+  def equip(item)
+    puts "checking item"
+    p item
+    item.equipping(self)
+  end
+
+  def unequip(item)
+    item.unequipping(self)
   end
 
   def check_marked?
@@ -60,17 +81,24 @@ class Character
   ## TODO: not sure that i actually need any return value from attack or use ability
   # leaving for now but return nil may be ok
 
-  #could also return attack value and create a new method in each class, called the same,
-  # that takes super and then calculates the damage via class specific logic <--
   def attack(target)
     if target.calculate_miss?
       attack_damage = nil
       puts "attack missed!"
     else
-      random_number = rand((0 + self.level)..(9 + self.level))
-      crit_chance = rand(1..20) == 20 ? 1.5 : 1.0
+      if target.instance_variable_defined?(:@dodge)
+        target.remove_instance_variable(:@dodge)
+        attack_damage = nil
+        puts "#{target.name} dodged the attack!"
+        return attack_damage
+      end
 
-      puts "crit!" if crit_chance  == 1.5
+      random_number = rand((0 + self.level)..(9 + self.level))
+      lethal_mods = self.instance_variable_defined?(:@lethal) ? [19, 2.0] : [20, 1.5]
+      crit_chance = rand(1..20) >= lethal_mods[0] ? lethal_mods[1] : 1.0
+      #                              19 or 20         2.0 or 1.5
+
+      puts "crit!" if crit_chance >= 1.5
 
       attack_damage = ((self.strength + random_number) * crit_chance).ceil.to_i
       puts "attack: #{self.strength + random_number}: after crit #{attack_damage}" if crit_chance  == 1.5
@@ -80,6 +108,11 @@ class Character
   end
 
   def use_ability(ability_name, target=nil)
+    if target.instance_variable_defined?(:@dodge)
+      puts "#{target.name} dodged the attack!"
+      return
+    end
+
     ability_output = self.send(ability_name.to_sym)
 
     puts "ability outputs: #{ability_output}"
@@ -97,10 +130,12 @@ class Character
 
       if ability_output.is_a?(Array)
         ability_output.each do |attack|
-          return target.health -= [(attack - target.defense), 1].max
+           target.health -= [(attack - target.defense), 1].max
+           return
         end
       else
-        return target.health -= [(ability_output - target.defense), 1].max
+          target.health -= [(ability_output - target.defense), 1].max
+          return
       end
 
       puts "target health after damage: #{target.health}"
@@ -112,9 +147,12 @@ class Character
 
     if self.experience >= 100 + ((self.level - 1) * 10)
       self.experience -= 100
+      self.experience = 0 if self.level == 10
       return true
     else
-      puts "#{self.name} gained #{amount} experience points. #{(100 + ((self.level - 1) * 10)) - self.experience} until level up."
+      next_level =  "#{self.name} gained #{amount} experience points. #{(100 + ((self.level - 1) * 10)) - self.experience} until level up."
+      max_level = "#{self.name} is at max level."
+      puts self.level < 10 ? next_level : max_level
     end
 
     false
