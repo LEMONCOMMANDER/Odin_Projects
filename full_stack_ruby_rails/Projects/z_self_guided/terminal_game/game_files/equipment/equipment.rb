@@ -45,6 +45,7 @@ class Equipment
 
   def unequipping(owner_object)
     self.equipped = false
+    @owner = nil
     update_stats(owner_object)
   end
 
