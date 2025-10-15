@@ -1,10 +1,10 @@
-require_relative 'character'
-require_relative 'game_files/character_classes/warrior'
-require_relative 'game_files/character_classes/wizard'
-require_relative 'game_files/character_classes/hunter'
-require_relative 'game_files/character_classes/rouge'
-require_relative 'game_files/monster_classes/slime'
-require_relative 'game_files/equipment/game_files/equipment'
+require_relative './character'
+require_relative './character_classes/warrior'
+require_relative './character_classes/wizard'
+require_relative './character_classes/hunter'
+require_relative './character_classes/rouge'
+require_relative './monster_classes/slime'
+require_relative './equipment/equipment.rb'
 
 guy = Character.new("guy")
 warrior = Warrior.new("Conan")
@@ -17,8 +17,8 @@ helmet = Equipment.new({
                          type: "head",
                          rarity: "Common",
                          color: "Gray",
-                         stats: {health: 0, defense: 0},
-                         abilities: {mend: AbilityDefs::MEND}
+                         stats: {health: 10, defense: 5},
+                         item_abilities: {mend: AbilityDefs::MEND}
                        })
 
 # p ["health: #{wizard.health}", "defense: #{wizard.defense}", "abilities: #{wizard.abilities}"]
@@ -37,3 +37,18 @@ helmet = Equipment.new({
 # wizard.unequip(helmet)
 # puts ""
 # p ["health: #{wizard.health}", "defense: #{wizard.defense}", "abilities: #{wizard.abilities}"]
+
+puts "inspecting wizard no helm"
+p wizard
+puts ""
+wizard.equip(helmet)
+
+puts "inspecting wizard with helm"
+p wizard
+# guy.unequip(helmet)
+#
+# puts "guy stats after unequip: #{[guy.health, guy.defense, guy.head, guy.abilities].inspect}"
+
+# puts "----------------------"
+# p guy.abilities
+# p guy.instance_variables

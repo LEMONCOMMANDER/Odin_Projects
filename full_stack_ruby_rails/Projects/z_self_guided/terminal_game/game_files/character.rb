@@ -1,5 +1,5 @@
-require_relative 'game_files/abilities/character_game_files/abilities'
-require_relative '../t_methods'
+require_relative './abilities/character_abilities'
+require_relative './test_methods'
 
 class Character
   include CharacterAbilities
@@ -39,14 +39,70 @@ class Character
     @accessory = nil
   end
 
-  def equip(item)
-    puts "checking item"
-    p item
-    item.equipping(self)
+  #hiding instance variables from equipment
+  def inspect
+    head_name = @head ? @head.name : nil
+    chest_name = @chest ? @chest.name : nil
+    arms_name = @arms ? @arms.name : nil
+    legs_name = @legs ? @legs.name : nil
+    weapon_name = @weapon ? @weapon.name : nil
+    shield_name = @shield ? @shield.name : nil
+    accessory_name = @accessory ? @accessory.name : nil
+    puts "CHARACTER: #{@name}, LVL: #{@level}, EXP: #{@experience}, HP: #{@health}/#{@max_health}, STR: #{@strength}, DEF: #{@defense}, SPD: #{@speed}, WIS: #{@wisdom}, AP: #{@ability_points}, GOLD: #{@gold}, head: #{head_name}, chest: #{chest_name}, arms: #{arms_name}, legs: #{legs_name}, weapon: #{weapon_name}, shield: #{shield_name}, accessory: #{accessory_name}, abilities: #{@abilities}"
   end
 
-  def unequip(item)
-    item.unequipping(self)
+  def equip(item)
+    item_type = item.type
+
+    if self.send(item_type)
+      old_item = self.send(item_type)
+      self.unequip(old_item)
+    end
+
+    self.send("#{item_type}=", item)
+    update_stats(item)
+  end
+
+  def unequip(old_item)
+    old_item_type = old_item.type
+    self.send("#{old_item_type}=", nil) if self.send(old_item_type) #set nil if item slot is used || leave nil
+    update_stats(old_item)
+  end
+
+  def update_stats(item)
+    item_info = item.return_item_info
+
+    if self.send(item.type) #if item slot is not nil
+      item_info[:stats].each do |stat, value|
+        new_owner_stat = (self.send(stat) + value)
+        self.send("#{stat}=", new_owner_stat )
+        self.max_health += value if stat == :health
+      end
+
+      if item_info[:item_abilities]
+        item_info[:item_abilities].each do |ability, info|
+          owner_abilities = self.abilities
+          unless owner_abilities[ability] #won't add an ability if the user already has it
+            owner_abilities[ability] = info
+            info[:native] = false #add native:false tag to mark for delete on unequip
+          end
+        end
+      end
+    else #no item equipped
+      item_info[:stats].each do |stat, value|
+        new_owner_stat = (self.send(stat) - value)
+        self.send("#{stat}=", new_owner_stat )
+        self.max_health -= value if stat == :health
+      end
+
+      if item_info[:item_abilities]
+        item_info[:item_abilities].each do |ability, info|
+          owner_abilities = self.abilities
+          owner_abilities.delete(ability.to_sym) if owner_abilities[ability][:native] == false
+        end
+      end
+    end
+
   end
 
   def check_marked?
@@ -191,4 +247,3 @@ class Character
   end
 
 end
-
