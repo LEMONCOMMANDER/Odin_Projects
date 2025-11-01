@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/full_stack_ruby_rails/Projects/z_self_guided/terminal_game/Dockerfile">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/full_stack_ruby_rails/Projects/z_self_guided/terminal_game/Dockerfile" />
+              <option name="originalContent" value="# syntax=docker/dockerfile:1&#10;&#10;FROM ubuntu:latest&#10;LABEL authors=&quot;lemonlord&quot;&#10;&#10;#install ruby&#10;RUN sudo apt-get install ruby-full&#10;#run bunler for gems&#10;RUN bundle install&#10;&#10;#create a dir called 'terminal_game' and -- set it as the working dir -- &lt;&lt; how to do this?&#10;RUN mkdir terminal_game&#10;#whatever the set working dir is, do here... maybe&#10;&#10;# Copy local terminal_game directory into container&#10;COPY . /terminal_game&#10;&#10;# Install gems (if Gemfile exists)&#10;RUN if [ -f Gemfile ]; then bundle install; fi" />
+              <option name="updatedContent" value="# syntax=docker/dockerfile:1&#10;&#10;FROM ubuntu:latest&#10;LABEL authors=&quot;lemonlord&quot;&#10;&#10;#install ruby&#10;RUN sudo apt-get install ruby-full&#10;#run bunler for gems&#10;RUN bundle install&#10;&#10;#create a dir called 'terminal_game' and -- set it as the working dir -- &lt;&lt; how to do this?&#10;RUN mkdir terminal_game&#10;#whatever the set working dir is, do here... maybe&#10;&#10;# Copy local terminal_game directory into container&#10;COPY . /terminal_game&#10;&#10;# Install gems (if Gemfile exists)&#10;RUN if [ -f Gemfile ]; then bundle install; fi" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
