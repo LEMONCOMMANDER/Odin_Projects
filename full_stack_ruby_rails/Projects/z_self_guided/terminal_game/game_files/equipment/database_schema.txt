@@ -1,0 +1,30 @@
+id is auto gne
+name required
+description optional
+
+type required: choice of ['head', 'chest', 'arm', 'leg', 'weapon', 'shield', 'accessory']
+role required: choice of ['offense', 'defense', 'utility']
+    each chest will offer 3 items that the player can select 1 from - one of each type
+
+rarity (will be used as modifier of stats):
+    choice of: ['common', 'rare', 'epic', 'legendary']
+color - required w/ default:
+    any character can take or equip any piece of equipment (except red monster items), but the color
+    will indicate which stats / abilities are boosted - the colored equipment is tuned for that class
+        grey = any class
+        orange = warrior specific
+        blue = mage specific
+        purple = rogue specific
+        green = hunter specific
+        red = monster item (players will never see these)
+
+STATS - required w/ default:
+- each stat is listed as an individual column
+[health, strength, defense, speed, wisdom, ability_points]
+
+ABILITIES - optional:
+3 columns for abilities 1-3 if present
+    format: ability1: 'fireball'  >> in code, we can sanitize to something like:
+        ability_assign : input.downcase.to_sym
+        ability_def : input.upcase
+            self.abilities[input.downcase.to_sym] = AbilityDefs::#{input.upcase}

@@ -22,7 +22,7 @@
 #ivs should include stats, names, item_abilities, rarity
 
 class Equipment
-  attr_accessor :owner,:type, :name, :rarity, :color, :stats, :equipped, :item_abilities
+  attr_accessor :owner,:type, :name, :rarity, :color, :stats, :equipped, :item_abilities, :role
 
   def initialize(property_hash)
     p = property_hash
@@ -30,6 +30,7 @@ class Equipment
     @name = p[:name]
     @description = p[:description] || nil
     @type = p[:type]
+    @role = p[:role]
     @rarity = p[:rarity]
     @color = p[:color]
 

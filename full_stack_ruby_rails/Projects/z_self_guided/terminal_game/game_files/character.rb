@@ -24,7 +24,6 @@ class Character
     @speed = 5
     @wisdom = 5
 
-    @defense = 5
     @ability_points = 10
     @abilities = {}
 
@@ -75,7 +74,7 @@ class Character
     if self.send(item.type) #if item slot is not nil
       item_info[:stats].each do |stat, value|
         new_owner_stat = (self.send(stat) + value)
-        self.send("#{stat}=", new_owner_stat )
+        self.send("#{stat}=", new_owner_stat ) #health will in/decrease with item equip unless stat == :health
         self.max_health += value if stat == :health
       end
 
