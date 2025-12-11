@@ -1,4 +1,4 @@
-id is auto gne
+id is auto gen
 name required
 description optional
 
