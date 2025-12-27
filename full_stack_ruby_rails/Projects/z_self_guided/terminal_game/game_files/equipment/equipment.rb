@@ -24,8 +24,36 @@
 class Equipment
   attr_accessor :owner,:type, :name, :rarity, :color, :stats, :equipped, :item_abilities, :role
 
+  ## converts string keys retrieved from db objects to symbols
+  def convert_keys(property_hash)
+    p = property_hash
+    return p unless p.keys.any? {|key| key.class == String}
+
+    new_p = {}
+    stats = {}
+    abilities = {}
+
+    p.each do |key, value|
+      if key.include?("_mod")
+        stat = key.split("_")[0].to_sym
+        stat = :ability_points if stat == :ap
+
+        stats[stat] = value.to_i
+      elsif key.include?("ability")
+        ability_name = value.strip.downcase if value
+        abilities[ability_name.to_sym] = AbilityDefs.const_get(ability_name.upcase) if ability_name
+      else
+        new_p[key.to_sym] = value
+      end
+    end
+
+    new_p[:stats] = stats
+    new_p[:item_abilities] = abilities
+    new_p
+  end
   def initialize(property_hash)
     p = property_hash
+    p = convert_keys(p)
 
     @name = p[:name]
     @description = p[:description] || nil

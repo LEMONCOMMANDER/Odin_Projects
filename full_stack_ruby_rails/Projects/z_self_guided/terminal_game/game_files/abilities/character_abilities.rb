@@ -19,7 +19,6 @@ module CharacterAbilities
     def fireball
       return unless self.abilities.has_key?(:fireball)
 
-
       if self.ability_points >= 5
         base = 6 + self.level + self.wisdom
         range = rand(1..(8 + self.wisdom))
@@ -181,10 +180,19 @@ module CharacterAbilities
         self.ability_points = [(self.ability_points - 6), 0].max
       end
     end
+  end
 
+  module ItemAbilities
+    def block
+      return nil unless self.abilities.has_key?(:block)
+
+      #does nothing - passive ability from steel shield
+      return nil
+    end
   end
 
   include Magic
   include Physical
   include Utility
+  include ItemAbilities
 end

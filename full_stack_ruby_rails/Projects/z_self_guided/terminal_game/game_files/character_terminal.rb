@@ -5,6 +5,7 @@ require_relative './character_classes/hunter'
 require_relative './character_classes/rouge'
 require_relative './monster_classes/slime'
 require_relative './equipment/equipment.rb'
+require_relative './db_connect.rb'
 
 guy = Character.new("guy")
 warrior = Warrior.new("Conan")
@@ -38,13 +39,13 @@ helmet = Equipment.new({
 # puts ""
 # p ["health: #{wizard.health}", "defense: #{wizard.defense}", "abilities: #{wizard.abilities}"]
 
-puts "inspecting wizard no helm"
-p wizard
-puts ""
-wizard.equip(helmet)
-
-puts "inspecting wizard with helm"
-p wizard
+# puts "inspecting wizard no helm"
+# p wizard
+# puts ""
+# wizard.equip(helmet)
+#
+# puts "inspecting wizard with helm"
+# p wizard
 # guy.unequip(helmet)
 #
 # puts "guy stats after unequip: #{[guy.health, guy.defense, guy.head, guy.abilities].inspect}"
@@ -52,3 +53,21 @@ p wizard
 # puts "----------------------"
 # p guy.abilities
 # p guy.instance_variables
+
+# conn = DBConnect.connect
+# get_shield = conn.exec_params("SELECT * FROM equipment WHERE name = $1;", ['Steel Shield'] )
+#
+# p get_shield.to_a.first.to_h
+#
+# shield = Equipment.new(get_shield.to_a.first)
+# conn.close
+# puts ""
+# p shield
+#
+# puts ""
+# warrior.equip(shield)
+# p warrior
+
+abilities = AbilityDefs.constants
+p abilities
+

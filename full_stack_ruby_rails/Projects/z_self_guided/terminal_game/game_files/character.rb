@@ -1,7 +1,9 @@
 require_relative './abilities/character_abilities'
 require_relative './test_methods'
+require_relative './db_connect'
 
 class Character
+  include DBConnect
   include CharacterAbilities
   include TestMethods
 
@@ -58,6 +60,8 @@ class Character
       self.unequip(old_item)
     end
 
+    # .send requires the IV attribute, and then the assigned value (in this case object) in the format below. Otherwise,
+    # it just retrieves (as seen ^ if self..send(item_type))
     self.send("#{item_type}=", item)
     update_stats(item)
   end
@@ -75,6 +79,7 @@ class Character
       item_info[:stats].each do |stat, value|
         new_owner_stat = (self.send(stat) + value)
         self.send("#{stat}=", new_owner_stat ) #health will in/decrease with item equip unless stat == :health
+        self.health += value if self.health == self.max_health #increase current hp to equipment mod IF already at full hp
         self.max_health += value if stat == :health
       end
 
@@ -83,7 +88,7 @@ class Character
           owner_abilities = self.abilities
           unless owner_abilities[ability] #won't add an ability if the user already has it
             owner_abilities[ability] = info
-            info[:native] = false #add native:false tag to mark for delete on unequip
+            info[:native] = false # otherwise add native:false tag to mark for delete on unequip | no native = true tag
           end
         end
       end
@@ -92,12 +97,14 @@ class Character
         new_owner_stat = (self.send(stat) - value)
         self.send("#{stat}=", new_owner_stat )
         self.max_health -= value if stat == :health
+        self.health = self.max_health if self.health > self.max_health #reduce current hp to max if over max after unequip
       end
 
       if item_info[:item_abilities]
         item_info[:item_abilities].each do |ability, info|
           owner_abilities = self.abilities
           owner_abilities.delete(ability.to_sym) if owner_abilities[ability][:native] == false
+          # only remove abilites with native: false tag - from items
         end
       end
     end

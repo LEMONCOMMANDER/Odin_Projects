@@ -17,4 +17,5 @@ module AbilityDefs
   LUCKY = {cost: 0, type: "Passive", description: "A passive rouge ability that allows for critical hits."}
   LETHAL = {cost: 0, type: "Passive", description: "A passive rouge ability the makes critical hits easier to get and do more damage."}
   DODGE = {cost: 6, type: "Active", description: "Prepares to dodge the next attack or ability."}
+  BLOCK = {cost: 0, type: "Passive", description: "test ability that does nothing - given from Steel Shield"}
 end
