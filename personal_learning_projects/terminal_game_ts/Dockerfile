@@ -21,5 +21,5 @@ RUN mkdir terminal_game_ts
 # Copy local terminal_game_ruby directory into container
 COPY . /terminal_game_ts
 
-# Install gems (if Gemfile exists) - ai
-RUN if [ -f Gemfile ]; then bundle install; fi
+## Install gems (if Gemfile exists) - ai
+#RUN if [ -f Gemfile ]; then bundle install; fi
