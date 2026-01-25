@@ -1,4 +1,4 @@
-require_relative './abilities/character_abilities'
+require_relative './abilities/aracter_abilities'
 require_relative './test_methods'
 require_relative './db_connect'
 

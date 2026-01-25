@@ -1,4 +1,4 @@
-require_relative './character'
+require_relative './aracter'
 require_relative './character_classes/warrior'
 require_relative './character_classes/wizard'
 require_relative './character_classes/hunter'
