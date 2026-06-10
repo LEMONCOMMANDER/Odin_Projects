@@ -4,22 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
     <header class="header">
-        <h2 class="header_name">Odin Recipees</h2>
-        <button id="header_back" class="back_button">Back to Recipees</button>
-    </header>
-    <h1>Pizza Recipee</h1>
-    <div class="recipee_image_box">
-        <div class="image_section">
-            <img src="../src/pizza.png" atl="pizza_picture">
+        <div>
+            <h2 class="header_name">Odin Recipees</h2>
         </div>
-        <div class="image_box_text">
-            <h3>Gormet Sourdough Pizza</h3>
-            <p class="recipee_description">
-                This unbelievable pizza will leave you wanting more. It's delicate crust will have a beautiful crumb and bubble, and the carmelization will make the experience chew and crisp all at once. Each bit will leave you desperate for the next!
-            </p>    
+        <div id="header-buttons">
+            <button id="header_back" class="back_button button">
+                <a href="../index.html">Back to Recipees</a>
+            </button>
+        </div>
+    </header>
+
+    <div id="main">
+        <h1 style="align-self: center;">Pizza Recipee</h1>
+        <div class="recipee_image_box">
+            <div class="image_section">
+                <img src="../src/pizza.png" atl="pizza_picture">
+            </div>
+            <div class="image_box_text">
+                <h3>Gormet Sourdough Pizza</h3>
+                <p class="recipee_description">
+                    This unbelievable pizza will leave you wanting more. It's delicate crust will have a beautiful crumb and bubble, and the carmelization will make the experience chew and crisp all at once. Each bit will leave you desperate for the next!
+                </p>    
+            </div>
         </div>
         <div class="recipee_body">
             <h3>Ingredients</h3>
@@ -32,20 +42,21 @@
             </ul>
             <h3>Steps</h3>
             <ol class="steps">
-                <li>1. make dough</li>
-                <li>2. put dough in oven for 5-6 min</li>
-                <li>3. top with a light layer of cheese. Bake pizza for 2-3 minutes longer</li>
-                <li>4. sauce and cheese pizza. Cheese should drape over the edge of the crust to apply proper carmelization</li>
-                <li>5. bake another 10-12 min checking for doneness.</li>
+                <li>make dough</li>
+                <li>put dough in oven for 5-6 min</li>
+                <li>top with a light layer of cheese. Bake pizza for 2-3 minutes longer</li>
+                <li>sauce and cheese pizza. Cheese should drape over the edge of the crust to apply proper carmelization</li>
+                <li>bake another 10-12 min checking for doneness.</li>
             </ol>
         </div>
+    </div>
         
 
     </div>
 
 
     <footer class="footer">
-        <button id="footer_back" class="back_button">Back to Recipees</button>
+        <button id="footer_back" class="back_button button">Back to Recipees</button>
     </footer>
 </body>
 

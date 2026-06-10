@@ -1,0 +1,149 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100dvh;
+    width: 100dvw;
+    min-height: 400px;
+    min-width: 320px;
+    box-sizing: border-box;
+}
+
+#main {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    /* border: solid black .5rem; */
+
+    font-size: 1.2rem;
+    overflow: scroll;
+}
+
+#recipee_links {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 15%;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #69e8a2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.footer {
+    height: 10%;
+    width: 100%;
+    background-color: #69e8a2;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+
+#header-buttons {
+    display: flex;
+
+}
+
+.recipee_image_box {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.image_section {
+    height: 40dvh;
+    width: 100%;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.recipee_image_box img {
+    width: 100%;   /* fills parent width */
+    height: 100%;  /* fills parent height */
+    object-fit: contain;
+}
+
+.image_box_text {
+    height: auto;
+    padding: .5rem;
+}
+
+.image_box_text > * {
+    margin: .5rem;
+}
+
+.recipee_body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipee_body > * {
+    margin-bottom: 0.75rem;
+}
+
+.ingredients {
+    padding-left: 3rem;
+}
+
+.steps {
+    padding-left: 3rem;
+}
+
+.button {
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10%;
+    background-color: #ddf1ef;
+    border: solid .2rem black;
+    transition: background-color 0.2s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: .5rem;
+}
+
+.button:hover {
+    background-color: aqua;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 100%;
+    height: 100%;
+
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+    border: 3px solid transparent; /* creates the gap */
+    background-clip: content-box;  /* prevents bg from filling the border */
+
+
+}
